@@ -1,0 +1,63 @@
+def criarlista(valor):
+    lista = []
+    for e in range(1, valor + 1):
+        e = str(e)
+        lista.append(e)
+    return lista
+
+
+bool = False
+bool2 = False
+lista02 = []
+cont = 0
+
+caracteristicasgrafo = input().split()
+resultado = int(caracteristicasgrafo[1])
+resultado1 = int(caracteristicasgrafo[0])
+lista = criarlista(resultado1)
+
+for e in range(0, resultado):
+    pergunta = input().split()
+
+    for e in lista02:
+        e = e.split('-')
+        if pergunta[0] == e[0]:
+            bool = True
+
+    if bool == True:
+        for string in lista02:
+            var = string[:]
+            string = string.split('-')
+            if pergunta[0] == string[0]:
+                posicao = lista02.index(var)
+                var2 = var[:]
+                for i in lista02:
+                    var = var + '-' + pergunta[1]
+                    lista02.insert(posicao, var)
+                    posicao2 = lista02.index(var2)
+                    convertendo = int(posicao2)
+                    lista02.pop(posicao2)
+                    break
+    else:
+        teste = pergunta[0] + '-' + pergunta[1]
+        lista02.append(teste)
+
+
+for e in lista02:
+    e = e.split('-')
+    for i in lista:
+        if i in e:
+            valor = int(lista.index(i))
+            del lista[valor]
+            
+
+for e in lista:
+    lista02.append(e)
+    cont += 1
+
+for el in lista02:
+    var = int(el.count('-'))
+    cont += var
+
+print(cont)
+print(lista02)
